@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polling Example</title>
+</head>
+<body>
+    <h1>Polling Example</h1>
+    <p>
+        This example demonstrates two types of server-client communication techniques: 
+        <strong>Short Polling</strong> and <strong>Long Polling</strong>. Both techniques are used to fetch updates from the server, 
+        but they work differently. Use the buttons below to start and stop each type of polling.
+    </p>
+
+    <div>
+        <h2>Short Polling</h2>
+        <p>
+            <strong>Short Polling</strong> is a technique where the client sends requests to the server at regular intervals 
+            (e.g., every 2 seconds) to check for updates. This method is simple but can result in unnecessary requests if there are no updates.
+        </p>
+        <p id="shortPollingData">Waiting for data...</p>
+        <button onclick="startShortPolling()">Start Short Polling</button>
+        <button onclick="stopShortPolling()">Stop Short Polling</button>
+    </div>
+
+    <div>
+        <h2>Long Polling</h2>
+        <p>
+            <strong>Long Polling</strong> is a technique where the client sends a request to the server and waits for the server 
+            to respond when there is an update. If no update is available, the server holds the request until a timeout occurs 
+            (e.g., 20 seconds). This method reduces unnecessary requests and is more efficient than short polling.
+        </p>
+        <p id="longPollingData">Waiting for data...</p>
+        <button onclick="startLongPolling()">Start Long Polling</button>
+        <button onclick="stopLongPolling()">Stop Long Polling</button>
+    </div>
+
+    <div>
+        <h2>Send Notification</h2>
+        <p>
+            Use the input box below to send a message to the server. The message will be sent to both short polling 
+            and long polling clients, and they will display the update when they receive it.
+        </p>
+        <input type="text" id="messageInput" placeholder="Enter message">
+        <button onclick="notifyServer('shortpolling')">Notify Short Polling</button>
+        <button onclick="notifyServer('longpolling')">Notify Long Polling</button>
+    </div>
+
+    <script src="polling.js"></script>
+</body>
+</html>
